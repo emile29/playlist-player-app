@@ -1,0 +1,93 @@
+<div class='page-container'>
+	<div class='header-container'>
+		<div class='header-first-row'>
+			<span class='header-first-row-header'>
+				<b>YT Playlist Player</b><span class='author'>by emile </span><span class='author-after'>©</span>
+			</span>
+			<div class='header-first-row-right-section'>
+				<div class='channel-icon-dropdown' style='display: none;' ngbDropdown>
+					<button class='channel-icon-dropdown-button' ngbDropdownToggle>
+						<img class='channel-icon-dropdown-button-thumbnail' src='{{channelInfo.thumbnail}}' title='{{channelInfo.title}}'>
+					</button>
+					<div class='channel-icon-dropdown-menu' ngbDropdownMenu>
+						<a href='https://www.youtube.com/channel/{{channelInfo.id}}' target="_blank"><div class='channel-title'>{{channelInfo.title}}</div></a>
+					</div>
+				</div>
+				<button class='sign-in-button' style='display: none;'>sign in</button>
+				<div class='user-icon-dropdown' style='display: none;' ngbDropdown>
+					<button class='user-icon-dropdown-button' ngbDropdownToggle></button>
+					<div class='user-icon-dropdown-menu' ngbDropdownMenu>
+						<div class='name'>{{userProfile.firstName}} {{userProfile.lastName}}</div>
+						<div class='email' title='{{userProfile.email}}'>{{userProfile.email}}</div>
+						<div class='logout-button-container'><button class='logout-button'>Logout</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='header-second-row'>
+			<div class='all-playlists-dropdown' ngbDropdown>
+				<button class='all-playlists-dropdown-button' style='display: none;' ngbDropdownToggle></button>
+				<div class='all-playlists-dropdown-menu' ngbDropdownMenu>
+					<a class='all-playlists-dropdown-menu-item' *ngFor="let playlist of allPlaylists" (click)="changePlaylist(playlist.id)" ngbDropdownItem>
+						<div id="{{playlist.id}}" class='no-overflow'>{{playlist.snippet.title}}</div>
+					</a>
+				</div>
+			</div>
+			<!-- <div class='channel-id-dropdown' ngbDropdown>
+				<button class='channel-id-dropdown-button' ngbDropdownToggle>by channel id</button>
+				<div class='channel-id-dropdown-menu' ngbDropdownMenu>
+					<div class='channel-id-dropdown-menu-item'>
+						<div class='channel-id-info-dropdown-container'>
+							<div class='channel-id-info-dropdown' ngbDropdown>
+								<button class='channel-id-info-dropdown-button' ngbDropdownToggle><i class="fa fa-info-circle"></i></button>
+								<div class='channel-id-info-dropdown-menu' ngbDropdownMenu>
+									For e.g, the url of a YouTube channel is as such,
+									<span>https://www.youtube.com/channel/<span style='color: #FFFFFF80'>CHANNEL_ID</span></span>
+								</div>
+							</div>
+						</div>
+						<input class='channel-id-input' placeholder="channel id" #channelId>
+						<button class='channel-id-dropdown-menu-item-search-button' (click)='getPlaylistByChannelId(channelId.value)'><i class='fa fa-search'></i></button>
+					</div>
+				</div>
+			</div> -->
+			<div class="search-area">
+				<input class="search-bar" placeholder="search channel" #search>
+				<button class="search-button" (click)="getChannels(search.value)"><i class="fa fa-search"></i></button>
+			</div>
+		</div>
+	</div>
+	<div class='loader-container' style='padding-top: 150px; display: none;'><div class='loader'></div></div>
+	<div class="playlist-items-container">
+		<div class='num-of-songs' *ngIf="currentPlaylist">{{currentPlaylistItems.length}} songs <span *ngIf="currentPlaylistItems.length == 30">(max)</span></div>
+		<div class='item-row-container' *ngFor="let item of currentPlaylistItems; let i = index">
+			<a (click)="buildAudioPlayer(videoId.value, videoDuration.value, title.value, thumbnail.value, true);">
+				<input value="{{item.contentDetails.videoId}}" style="display: none;" #videoId>
+				<input value="{{item.contentDetails.duration}}" style="display: none;" #videoDuration>
+				<input value="{{item.snippet.title}}" style="display: none;" #title>
+				<input value="{{item.snippet.thumbnails.high.url}}" style="display: none;" #thumbnail>
+				<div class='item-content-container' id="{{item.contentDetails.videoId}}-row-container">
+					<img class='item-content-container-thumbnail' src="{{item.snippet.thumbnails.high.url}}">
+					<div class='item-content-container-right-section'>
+						<div class='item-content-container-right-section-title'>{{formatTitle(item.snippet.title)}}</div>
+						<div class='item-content-container-right-section-artist'>{{formatArtist(item.snippet.title)}}</div>
+					</div>
+				</div>
+			</a>
+			<div class='item-separator-container'><hr class='item-separator' *ngIf="i < currentPlaylistItems.length - 1"></div>
+		</div>
+	</div>
+	<div class='channel-results-container' style="display: none;">
+		<div class="channel-results" *ngIf="channelResults != []"></div>
+		<div class='item-container' *ngFor="let item of channelResults; let i = index" (click)="getPlaylistByChannelId(item.id.channelId)">
+			<div class="thumbnail-container">
+				<img class='thumbnail' src="{{item.snippet.thumbnails.default.url}}">
+			</div>
+			<div class="right">
+				<div><b>{{item.snippet.channelTitle}}</b></div>
+				<div class='description'>{{checkLength(item.snippet.description)}}</div>
+			</div>
+		</div>
+	</div>
+	<div class="audio-player-placeholder"></div>
+</div>

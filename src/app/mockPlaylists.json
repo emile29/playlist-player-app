@@ -1,0 +1,97 @@
+{
+	"kind": "youtube#playlistListResponse",
+	"etag": "\"Dn5xIderbhAnUk5TAW0qkFFir0M/bKY2NRM100_zy83YxHRZAuHf2bw\"",
+	"pageInfo": {
+	 "totalResults": 2,
+	 "resultsPerPage": 5
+	},
+	"items": [
+	 {
+	  "kind": "youtube#playlist",
+	  "etag": "\"Dn5xIderbhAnUk5TAW0qkFFir0M/O7olp9X38DS1foeOJNbYrZyIOPc\"",
+	  "id": "PLdNABDk39DDb4iyOboetT9XFVCZ1K76rh",
+	  "snippet": {
+		"publishedAt": "2020-01-20T19:01:46.000Z",
+		"channelId": "UCeiyPoexDKqrZScIR2MgZNw",
+		"title": "Anime Guitar Covers",
+		"description": "",
+		"thumbnails": {
+		 "default": {
+		  "url": "https://i.ytimg.com/vi/6GbpVo0zsB4/default.jpg",
+		  "width": 120,
+		  "height": 90
+		 },
+		 "medium": {
+		  "url": "https://i.ytimg.com/vi/6GbpVo0zsB4/mqdefault.jpg",
+		  "width": 320,
+		  "height": 180
+		 },
+		 "high": {
+		  "url": "https://i.ytimg.com/vi/6GbpVo0zsB4/hqdefault.jpg",
+		  "width": 480,
+		  "height": 360
+		 },
+		 "standard": {
+		  "url": "https://i.ytimg.com/vi/6GbpVo0zsB4/sddefault.jpg",
+		  "width": 640,
+		  "height": 480
+		 }
+		},
+		"channelTitle": "Emile Fingerstyle",
+		"localized": {
+		 "title": "Anime Guitar Covers",
+		 "description": ""
+		}
+	  },
+	  "contentDetails": {
+		"itemCount": 13
+	  }
+	 },
+	 {
+	  "kind": "youtube#playlist",
+	  "etag": "\"Dn5xIderbhAnUk5TAW0qkFFir0M/vDRMYW9fhC85uhImIeFJDSi_bfY\"",
+	  "id": "PLdNABDk39DDYoyykcQrD4XDJlqNm5hRjy",
+	  "snippet": {
+		"publishedAt": "2019-11-14T01:51:59.000Z",
+		"channelId": "UCeiyPoexDKqrZScIR2MgZNw",
+		"title": "Anime Guitar Instrumentals",
+		"description": "",
+		"thumbnails": {
+		 "default": {
+		  "url": "https://i.ytimg.com/vi/M6ajxG4t7L4/default.jpg",
+		  "width": 120,
+		  "height": 90
+		 },
+		 "medium": {
+		  "url": "https://i.ytimg.com/vi/M6ajxG4t7L4/mqdefault.jpg",
+		  "width": 320,
+		  "height": 180
+		 },
+		 "high": {
+		  "url": "https://i.ytimg.com/vi/M6ajxG4t7L4/hqdefault.jpg",
+		  "width": 480,
+		  "height": 360
+		 },
+		 "standard": {
+		  "url": "https://i.ytimg.com/vi/M6ajxG4t7L4/sddefault.jpg",
+		  "width": 640,
+		  "height": 480
+		 },
+		 "maxres": {
+		  "url": "https://i.ytimg.com/vi/M6ajxG4t7L4/maxresdefault.jpg",
+		  "width": 1280,
+		  "height": 720
+		 }
+		},
+		"channelTitle": "Emile Fingerstyle",
+		"localized": {
+		 "title": "Anime Guitar Instrumentals",
+		 "description": ""
+		}
+	  },
+	  "contentDetails": {
+		"itemCount": 27
+	  }
+	 }
+	]
+  }

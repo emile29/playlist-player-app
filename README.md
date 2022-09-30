@@ -1,6 +1,6 @@
 # Youtube Playlist Player
 
-An online audio player that fetches and plays your favourite youtube playlists in an aesthetic UI layout
+An online audio player that fetches and plays your favourite youtube playlists in an aesthetic UI layout.
 
 ## Live Demo
 

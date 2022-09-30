@@ -1,6 +1,6 @@
 # Youtube Playlist Player
 
-A webapp that retrieves all your youtube playlist using google authentication and lets you listen to your playlists in an audio player format.
+An online audio player that fetches and plays your favourite youtube playlists in an aesthetic UI layout
 
 ## Live Demo
 

@@ -16,8 +16,8 @@ const THIRD_COLOR = '#FFFFFF80';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-	API_KEY = "AIzaSyBnQYcaj09zjH_6qY1vHuMBPGcNk0Dw7aw";
-	CLIENT_ID = "946980346026-uq8aeo75tukfik0rdtr5m60gghf6p4v3.apps.googleusercontent.com";
+	API_KEY = _api_key_;
+	CLIENT_ID = _client_id_;
 	SCOPE = "https://www.googleapis.com/auth/youtube.readonly";
 	DISCOVERY_URL = 'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest';
 	GoogleAuth: any;

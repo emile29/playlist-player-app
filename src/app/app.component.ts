@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import * as mockPlaylistItems from './mockPlaylistItems.json';
 import * as mockPlaylists from './mockPlaylists.json';
 import * as $ from 'jquery';
+import { UtilsService } from './utils.service';
 let moment = require('moment');
 const momentDurationFormatSetup = require("moment-duration-format");
 
@@ -16,8 +17,12 @@ const THIRD_COLOR = '#FFFFFF80';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-	API_KEY = _api_key_;
-	CLIENT_ID = _client_id_;
+	// Read runtime-injected environment variables from window.__env (provided by server at /env.js)
+	// privateEnv = (window as any).__env || {};
+	// API_KEY = this.privateEnv.API_KEY;
+	// CLIENT_ID = this.privateEnv.CLIENT_ID;
+	// API_KEY = '';
+	// CLIENT_ID = '';
 	SCOPE = "https://www.googleapis.com/auth/youtube.readonly";
 	DISCOVERY_URL = 'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest';
 	GoogleAuth: any;
@@ -38,9 +43,14 @@ export class AppComponent implements AfterViewInit {
 	justLoaded = true;
 	currentPlaylistId = "";
 
-	constructor(private cdr: ChangeDetectorRef) { momentDurationFormatSetup(moment); }
+	constructor(private cdr: ChangeDetectorRef, private utilsService: UtilsService) { momentDurationFormatSetup(moment); }
 
 	ngOnInit() {
+		// this.utilsService.getEnv().subscribe((response) => {
+		// 	this.API_KEY = response.body.API_KEY;
+		// 	this.CLIENT_ID = response.body.CLIENT_ID;
+		// });
+
 		localStorage.getItem('channelId') ? this.channelInfo.id = localStorage.getItem('channelId') : null;
 		localStorage.getItem('channelTitle') ? this.channelInfo.title = localStorage.getItem('channelTitle') : null;
 		localStorage.getItem('channelThumbnail') ? this.channelInfo.thumbnail = localStorage.getItem('channelThumbnail') : null;
@@ -62,7 +72,11 @@ export class AppComponent implements AfterViewInit {
 		// 	confirm('You are about to reload the page and the state of your playlists!!');
 		// }
 
-		this.loadClient();
+		this.utilsService.getEnv().subscribe((response) => {
+			const API_KEY = response.body.API_KEY;
+			const CLIENT_ID = response.body.CLIENT_ID;
+			this.loadClient(API_KEY, CLIENT_ID);
+		});
 	}
 
 	ngAfterViewInit() {
@@ -73,14 +87,14 @@ export class AppComponent implements AfterViewInit {
 		}, 1000);
 	}
 
-	loadClient() {
+	loadClient(apiKey, clientId) {
 		// Load the API's client and auth2 modules.
 		gapi.load('client:auth2', () => {
 			// Initialize the gapi.client object, which app uses to make API requests.
 			// Get API key and client ID from API // console.
 			gapi.client.init({
-				'apiKey': this.API_KEY,
-				'clientId': this.CLIENT_ID,
+				'apiKey': apiKey,
+				'clientId': clientId,
 				'discoveryDocs': [this.DISCOVERY_URL],
 				'scope': this.SCOPE
 		  	}).then(() => {

@@ -807,7 +807,7 @@ export class AppComponent implements AfterViewInit {
 		});
 
 		document.body.onkeydown = (e) => { // space-bar click handler
-			if (e.keyCode == 32) {
+			if (e.keyCode == 32 && document.activeElement !== $('.search-bar')[0]) { // space-bar and not focused on search bar
 				e.preventDefault(); // disable default attributes on space-bar
 				if (this.playing) {
 					playerObj.pauseVideo();

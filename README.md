@@ -4,7 +4,7 @@ An online audio player that fetches and plays your favourite youtube playlists i
 
 ## Live Demo
 
-https://playlist-player-app-5590fec6c384.herokuapp.com (sometimes takes time to load, wait for a few seconds)
+https://playlist-player-app-5590fec6c384.herokuapp.com
 
 ## How to use?
 
